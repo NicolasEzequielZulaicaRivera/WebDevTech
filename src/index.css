@@ -61,3 +61,6 @@ ol, ul {
 .reversedOl > li {
     flex: 0 0 auto;
 }
+.winningSquare {
+  background-color: #cbe0b9;
+}
