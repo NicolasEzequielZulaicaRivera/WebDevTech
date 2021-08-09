@@ -52,3 +52,12 @@ ol, ul {
 .selectedMove {
   color: red;
 }
+
+.reversedOl { 
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.reversedOl > li {
+    flex: 0 0 auto;
+}

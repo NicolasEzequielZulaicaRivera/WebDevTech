@@ -57,6 +57,7 @@ class Game extends React.Component {
       ],
       xIsNext: true,
       moveNumber: 0,
+      reversedMovesOl: false,
     }
   }
   handleClick(i){
@@ -129,7 +130,17 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{historyButtons}</ol>
+          <button 
+            onClick={ ()=>{ 
+              this.state.reversedMovesOl = !this.state.reversedMovesOl; 
+              this.forceUpdate();
+            }}
+          >
+            Toggle order
+          </button>
+          <ol className={this.state.reversedMovesOl?"reversedOl":""} >
+            {historyButtons}
+          </ol>
         </div>
       </div>
     );
