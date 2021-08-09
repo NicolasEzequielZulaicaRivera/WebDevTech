@@ -73,6 +73,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # Personal Notes
 
+### Note
+start: 10.00
+
 ### Read Later
 
 [Optimizing Performance](https://reactjs.org/docs/optimizing-performance.html#examples)

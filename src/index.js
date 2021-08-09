@@ -53,7 +53,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
       history: [
-        { squares:Array(9).fill(null), },
+        { squares:Array(9).fill(null), clickedSquare: null },
       ],
       xIsNext: true,
       moveNumber: 0,
@@ -75,7 +75,7 @@ class Game extends React.Component {
     this.setState( 
       {
         history: history.concat([
-          {squares: squares},
+          {squares: squares, clickedSquare: i,},
         ]),
         moveNumber: history.length,
         xIsNext: !this.state.xIsNext,
@@ -96,7 +96,7 @@ class Game extends React.Component {
     const historyButtons = history.map(
       (step, moveNumber) => {
         const description = moveNumber?
-          'Go to move #'+moveNumber :
+          'Go to move #'+moveNumber+" "+getRowCols(step.clickedSquare) :
           'Start Game';
         return(
           <li key={moveNumber}>
@@ -132,6 +132,12 @@ class Game extends React.Component {
       </div>
     );
   }
+}
+
+function getRowCols(i){
+  const row = Math.floor(i/3);
+  const col= i%3;
+  return "("+row+","+col+")"
 }
 
 function calculateWinner(squares) {
