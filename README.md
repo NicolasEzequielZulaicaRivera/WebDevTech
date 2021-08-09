@@ -73,17 +73,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # Personal Notes
 
-### Note
-start: 10.00
+### See Later
 
-### Read Later
-
-[Optimizing Performance](https://reactjs.org/docs/optimizing-performance.html#examples)
+[][Optimizing Performance](https://reactjs.org/docs/optimizing-performance.html#examples)
+[][Tutorial](https://www.youtube.com/watch?v=dGcsHMXbSOA&t=2235s)
 
 ### Turotial proposed improvements
-1. Display the location for each move in the format (col, row) in the move history list.
-2. Bold the currently selected item in the move list.
-3. Rewrite Board to use two loops to make the squares instead of hardcoding them.
-4. Add a toggle button that lets you sort the moves in either ascending or descending order.
-5. When someone wins, highlight the three squares that caused the win.
-6. When no one wins, display a message about the result being a draw.
+[x]. Display the location for each move in the format (col, row) in the move history list.
+[x]. Bold the currently selected item in the move list.
+[x]. Rewrite Board to use two loops to make the squares instead of hardcoding them.
+[x]. Add a toggle button that lets you sort the moves in either ascending or descending order.
+[x]. When someone wins, highlight the three squares that caused the win.
+[x]. When no one wins, display a message about the result being a draw.
