@@ -176,6 +176,9 @@ function calculateWinner(squares) {
       return {winner: squares[a],winningSquares: lines[i],};
     }
   }
+  if( !squares.includes(null) ){
+    return {winner: "Tie", winningSquares: Array(9).fill().map((x,i)=>i), }
+  }
   return null;
 }
 
