@@ -102,6 +102,7 @@ class Game extends React.Component {
           <li key={moveNumber}>
             <button 
               onClick={ ()=>{this.jumpTo(moveNumber)} }
+              className = { ( (moveNumber==this.state.moveNumber)? "selectedMove":"" ) }
             >
               {description}
             </button>
