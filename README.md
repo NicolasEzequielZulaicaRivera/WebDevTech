@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install`
+
+Installs dependencies
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -76,7 +80,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### See Later
 
 - [ ] [Optimizing Performance](https://reactjs.org/docs/optimizing-performance.html#examples)
-- [ ] [Tutorial](https://www.youtube.com/watch?v=dGcsHMXbSOA&t=2235s)
+- [x] [Tutorial](https://www.youtube.com/watch?v=dGcsHMXbSOA&t=2235s)
 
 ### Turotial proposed improvements
 - [x] Display the location for each move in the format (col, row) in the move history list.

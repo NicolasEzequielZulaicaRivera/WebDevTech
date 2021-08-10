@@ -31,22 +31,22 @@ class Board extends React.Component {
     return (
       <div>
       {
-        [...Array(3)].map( (x,i)=>{
-          return(
+        [...Array(3)].map( 
+          (x,i)=>(
             <div className="board-row" key={i}>
             {
-              [...Array(3)].map( (y,j)=>{
-                return(
+              [...Array(3)].map( 
+                (y,j)=>(
                   this.renderSquare(
                     3*i+j,
                     this.props.winningSquares.includes(3*i+j)
                   )
                 ) 
-              })
+              )
             }
             </div>
           ) 
-        })
+        )
       }
       </div>
     );
