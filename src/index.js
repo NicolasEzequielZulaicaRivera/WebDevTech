@@ -5,9 +5,9 @@ import cartReducer from './components/reducers/cartReducer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import M from 'materialize-css'
-import 'materialize-css/dist/css/materialize.min.css'
+import './index.css'
 
-const store = createStore(cartReducer);
+const store = createStore(cartReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>
