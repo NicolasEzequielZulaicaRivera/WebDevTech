@@ -13,14 +13,17 @@
 - [x] Part 1
 - [x] Part 2
 - [ ] Part 3
+	- [ ] Add / Sub Quantity
+	- [ ] Shipping Toggle 
+	- [ ] `componentWillUnmount`
 - [ ] Review & Refactor
 
 ### Tutorials
 
 - [x] [Intro for beginners](https://www.youtube.com/watch?v=CVpUuw9XSjY)
-- [ ] [Cómo funciona redux](https://www.youtube.com/watch?v=5iMhFH9alI0)
-- [ ] [Actions en redux](https://www.youtube.com/watch?v=2iAKHu2rw-g&list=PL4WxketMZHyeeU3pilSJbgiIFnVzSUFVb&index=2)
-- [ ] [Reducers en redux](https://www.youtube.com/watch?v=ZvEEpZR2NKU&list=PL4WxketMZHyeeU3pilSJbgiIFnVzSUFVb&index=4&t=0s)
+- [x] [Cómo funciona redux](https://www.youtube.com/watch?v=5iMhFH9alI0)
+- [x] [Actions en redux](https://www.youtube.com/watch?v=2iAKHu2rw-g&list=PL4WxketMZHyeeU3pilSJbgiIFnVzSUFVb&index=2)
+- [x] [Reducers en redux](https://www.youtube.com/watch?v=ZvEEpZR2NKU&list=PL4WxketMZHyeeU3pilSJbgiIFnVzSUFVb&index=4&t=0s)
 - [ ] [Playlist de react redux](https://www.youtube.com/playlist?list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG)
 
 ### Read/Watch List
@@ -38,6 +41,9 @@
 ### [Alternative Parctice](#another_repo)
 
 Test out different aproaches seen in tutorials
+Other things to put in practice
+- Multiple Reducers
+- Polymorphims in Reducer actions
 
 ### Notes
 
