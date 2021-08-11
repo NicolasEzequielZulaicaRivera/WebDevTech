@@ -29,9 +29,9 @@ export const addQuantity= (id)=>{
     }
 }
 //toggle shipping action
-export const toggleShipping= (id)=>{
+export const toggleShipping= (shipping)=>{
     return{
         type: TOGGLE_SHIPPING,
-        id
+        shipping
     }
 }

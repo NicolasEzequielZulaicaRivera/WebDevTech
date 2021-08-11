@@ -17,7 +17,8 @@ const initState = {
 		{id:6,title:'Sleepy', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",price:90,img: Item6}
 	],
 	addedItems:[],
-	total: 0
+	total: 0,
+	shippingPrice: 6,
 
 }
 const cartReducer= (state = initState,action)=>{
@@ -102,7 +103,10 @@ const addQuantity = (state, action)=>{
 }
 
 const toggleShipping = (state, action)=>{
-	
+	return {
+		...state,
+		total: state.total + state.shippingPrice * (action.shipping?1:-1)
+	}
 }
 
 export default cartReducer;

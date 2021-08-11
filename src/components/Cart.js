@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeItem, subQuantity, addQuantity, toggleShipping } from './actions/cartActions'
+import Total from './Total';
+import { removeItem, subQuantity, addQuantity } from './actions/cartActions'
 
 class Cart extends Component{
 
@@ -50,7 +51,9 @@ class Cart extends Component{
             ):
 
              (
-                <p>Nothing.</p>
+                <div className="collection-item">
+                    <p>Nothing.</p>
+                </div>
              )
        return(
             <div className="container">
@@ -60,6 +63,7 @@ class Cart extends Component{
                         {addedItems}
                     </ul>
                 </div>  
+                <Total />
             </div>
        )
     }
