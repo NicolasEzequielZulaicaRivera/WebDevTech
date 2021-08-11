@@ -43,7 +43,7 @@
 Test out different aproaches seen in tutorials
 Other things to put in practice
 - Multiple Reducers
-- Polymorphims in Reducer actions
+- Polymorphims in Reducer
 
 ### Notes
 
@@ -52,16 +52,16 @@ Other things to put in practice
 ##### Structure
 
 ```
-📂src
- ┣ 📂resources
- ┣ 📂components
- ┣ ┣ 📂actions
- ┣ ┣ ┣ 📦action-types
- ┣ ┣ ┗ 📦actions
- ┣ ┣ 📂reducers
- ┃ ┗ 📦components
- ┣ 📄index.js
- ┗ 📄App.js
+ 📂src
+ ┣━📂resources
+ ┣━📂components
+ ┃ ┣━📂actions
+ ┃ ┃ ┣━📦action-types
+ ┃ ┃ ┗━📦actions
+ ┃ ┣━📂reducers
+ ┃ ┗━📦components
+ ┣━📄index.js
+ ┗━📄App.js
 ```
 
 \
