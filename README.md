@@ -37,6 +37,7 @@
 - [ ] Router & Links
 - [ ] ES6 - [W3S](https://www.w3schools.com/react/react_es6.asp)
 - [ ] Spread operator (...) - [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+- [ ] [Refactoring Reducers](https://redux.js.org/usage/structuring-reducers/refactoring-reducer-example)
 
 ### [Alternative Parctice](#another_repo)
 

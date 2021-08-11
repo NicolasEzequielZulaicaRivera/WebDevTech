@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { removeItem, subQuantity, addQuantity, toggleShipping } from './actions/cartActions'
 
 class Cart extends Component{
 
@@ -24,10 +25,23 @@ class Cart extends Component{
                                             <b>Quantity: {item.quantity}</b> 
                                         </p>
                                         <div className="add-remove">
-                                            <Link to="/cart"><i className="material-icons">arrow_drop_up</i></Link>
-                                            <Link to="/cart"><i className="material-icons">arrow_drop_down</i></Link>
+                                            <Link to="/cart"
+                                                onClick={ ()=>{this.props.addQuantity(item.id)} }
+                                            >
+                                                <i className="material-icons">arrow_drop_up</i>
+                                            </Link>
+                                            <Link to="/cart"  
+                                                onClick={ ()=>{this.props.subQuantity(item.id)} }
+                                            >
+                                                <i className="material-icons">arrow_drop_down</i>
+                                            </Link>
                                         </div>
-                                        <button className="waves-effect waves-light btn pink remove">Remove</button>
+                                        <button 
+                                            className="waves-effect waves-light btn pink remove"
+                                            onClick={ ()=>{this.props.removeItem(item.id)} }
+                                        >
+                                            Remove
+                                        </button>
                                     </div>
                                     
                                </li>                        
@@ -57,4 +71,13 @@ const mapStateToProps = (state)=>{
     }
 }
 
-export default connect(mapStateToProps)(Cart)
+const mapDispatchToProps= (dispatch)=>{
+    
+  return{
+    removeItem: (id)=>{dispatch(removeItem(id))},
+    subQuantity: (id)=>{dispatch(subQuantity(id))},
+    addQuantity: (id)=>{dispatch(addQuantity(id))},
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Cart)
