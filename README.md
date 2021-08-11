@@ -12,11 +12,7 @@
 
 - [x] Part 1
 - [x] Part 2
-- [ ] Part 3
-	- [ ] Add / Sub Quantity
-	- [ ] Shipping Toggle 
-	- [ ] `componentWillUnmount`
-- [ ] Review & Refactor
+- [x] Part 3
 
 ### Tutorials
 
@@ -92,35 +88,56 @@ ReactDOM.render(
 
 \
 
-##### Components ⚠️
-
-> I dont fully understand what's going on here, but it should be something like this:
-
-> mapStateToProps(state) connects the data in the component to the one in the store.
-> The function takes the state of the reducer and passes it as props to the component.
-
-> mapDispatchToProps adds the return object as props of the component.
-> This object should contain functions that dispatch actions to the reducers.
-> This functions should be called in the component.
+##### Components 
 
 - `import { connect } from 'react-redux'`
 - `import { addToCart } from './actions/cartActions'` import actions
 
 ###### connect
 
-`connect`
+`export default connect(mapStateToProps,mapDispatchToProps)(Cart)`
+
+- connect component to the store
 
 ###### mapStateToProps
 
-`mapStateToProps`
+```jsx
+const mapStateToProps = (state)=>{
+    return{
+        items: state.addedItems
+    }
+}
+```
+
+- Binds the props in the component to the one in the store.
+- The function takes the state of the reducer and passes it as props to the component.
+
 
 ###### mapDispatchToProps
 
-`mapDispatchToProps`
+```jsx
+const mapDispatchToProps= (dispatch)=>{
+    
+  return{
+    removeItem: (id)=>{dispatch(removeItem(id))},
+    subQuantity: (id)=>{dispatch(subQuantity(id))},
+    addQuantity: (id)=>{dispatch(addQuantity(id))},
+  }
+}
+```
 
-###### Handlers
+- Adds the return object as props of the component.
+- This objects should contain functions that dispatch actions to the reducers.
 
-- Lorem Ipsum
+###### Handling events
+
+- iniline handlers
+`onClick={ ()=>{this.props.addQuantity(item.id)} }`
+
+- define handlers
+`handleClick = (id)=>{ this.props.addToCart(id); }`
+
+`onClick={()=>{this.handleClick(item.id)}}`
 
 \
 
