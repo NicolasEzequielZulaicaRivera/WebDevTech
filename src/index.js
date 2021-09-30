@@ -4,37 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
-
-const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io', // uri specifies the URL of our GraphQL server.
-  cache: new InMemoryCache() // cache is an instance of InMemoryCache, which Apollo Client uses to cache query results after fetching them.
-});
-
-// Plain JS querry
-/*
-client
-  .query({
-    query: gql`
-      query GetRates {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
-*/
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

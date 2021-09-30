@@ -1,38 +1,47 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 import './App.css';
-import { useQuery, gql } from "@apollo/client";
 
-const USD_EXCHANGE_RATES_QUERY = gql`
-  query GetExchangeRates {
-    rates(currency: "USD") {
-      currency
-      rate
-    }
-  }
-`;
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+} from "@apollo/client";
 
-const ExchangeRates = () => {
-  const { loading, error, data } = useQuery(USD_EXCHANGE_RATES_QUERY);
+import ExchangeRates from "./components/ExchangeRates";
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return data.rates.map(({ currency, rate }) => (
-    <div key={currency}>
-      <p>
-        {currency}: {rate}
-      </p>
-    </div>
-  ));
-}
+const ratesClient = new ApolloClient({
+  uri: 'https://48p1r2roz4.sse.codesandbox.io', // uri specifies the URL of our GraphQL server.
+  cache: new InMemoryCache() // cache is an instance of InMemoryCache, which Apollo Client uses to cache query results after fetching them.
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h3>USD EXCHANGE RATES</h3>
-        <ExchangeRates />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <div className="navbar">
+          <Link to="/Rates">EXCHANGE RATES</Link>
+          <Link to="/Dogs">DOGS</Link>
+          <Link to="/Other">OTHER</Link>
+        </div>
+
+        <div className="main-container" >
+        <Switch>
+
+          <Route path="/Rates">
+            <ApolloProvider client={ratesClient}>
+              <ExchangeRates />
+            </ApolloProvider>
+          </Route>
+
+        </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 
