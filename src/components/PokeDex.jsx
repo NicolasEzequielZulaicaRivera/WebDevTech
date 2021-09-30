@@ -18,6 +18,11 @@ query getPoke($pokemonId: Int = 1) {
       name
       weight
       height
+      base_stats {
+        hp
+        attack
+        defense
+      }
       sprites {
         front_default
       }
@@ -52,7 +57,7 @@ const PokeSkills = ({pokemonId}) => {
     :
         <button id="poke-skill-btn"
             onClick={ ()=>{ getSkills({ variables: {pokemonId: pokemonId} }) } }
-        > SKILLS </button>
+        > SHOW </button>
 
 }
 
@@ -66,7 +71,24 @@ const FeaturedPokemon = ({ pokeState }) => {
     <>
         <h4>{data?.pokemon?.name}</h4>
         <img src={data?.pokemon?.sprites?.front_default} alt={data?.pokemon?.name + " image"} />
+
+
+        <div className="poke-data-title"><b>Base Stats</b></div>
+
+        <div className="poke-data">
+            <b>HP: </b>{data?.pokemon?.base_stats?.hp}
+        </div>
+        <div className="poke-data">
+            <b>ATK: </b>{data?.pokemon?.base_stats?.attack}
+        </div>
+        <div className="poke-data">
+            <b>DEF: </b>{data?.pokemon?.base_stats?.defense}
+        </div>
+
+        <br/><hr/><br/>
         
+        <div className="poke-data-title"><b>Other Stats</b></div>
+
         <div className="poke-data">
             <b>Weight: </b>{data?.pokemon?.weight}
         </div>
@@ -75,6 +97,8 @@ const FeaturedPokemon = ({ pokeState }) => {
         </div>
 
         <br/><hr/><br/>
+
+        <div className="poke-data-title"><b>Skills</b></div>
 
         <PokeSkills pokemonId={data?.pokemon?.id} />
     </>
