@@ -13,10 +13,15 @@ import {
 } from "@apollo/client";
 
 import ExchangeRates from "./components/ExchangeRates";
+import PokeDex from "./components/PokeDex";
 
 const ratesClient = new ApolloClient({
   uri: 'https://48p1r2roz4.sse.codesandbox.io', // uri specifies the URL of our GraphQL server.
   cache: new InMemoryCache() // cache is an instance of InMemoryCache, which Apollo Client uses to cache query results after fetching them.
+});
+const pokeClient = new ApolloClient({
+  uri: 'https://dex-server.herokuapp.com/',
+  cache: new InMemoryCache()
 });
 
 function App() {
@@ -25,7 +30,8 @@ function App() {
       <div className="App">
         <div className="navbar">
           <Link to="/Rates">EXCHANGE RATES</Link>
-          <Link to="/Dogs">DOGS</Link>
+          <Link to="/Poke">POKEMON</Link>
+          <Link to="/Tasks">TASKS</Link>
           <Link to="/Other">OTHER</Link>
         </div>
 
@@ -36,6 +42,20 @@ function App() {
             <ApolloProvider client={ratesClient}>
               <ExchangeRates />
             </ApolloProvider>
+          </Route>
+
+          <Route path="/Poke">
+            <ApolloProvider client={pokeClient}>
+              <PokeDex />
+            </ApolloProvider>
+          </Route>
+
+          <Route path="/Tasks">
+            <h1>WIP</h1>
+          </Route>
+
+          <Route path="/Other">
+            <h1>WIP</h1>
           </Route>
 
         </Switch>
