@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
+import "../styles/rates.css";
 
 
 /* Plain JS querry
@@ -41,16 +42,14 @@ const ExchangeRates = () => {
 
     return (
         <div className="ExchangeRates">
-            <h3>
+            <div className="title">
                 <span onClick={changeCurrency} >{currency.toUpperCase()} </span>
                 EXCHANGE RATES
-            </h3>
+            </div>
             {
                 data.rates.map( ({ currency, rate }) => (
-                    <div key={currency}>
-                        <p>
+                    <div key={currency} className="rate">
                         {currency}: {rate}
-                        </p>
                     </div>
                 ))
             }

@@ -9,10 +9,3 @@
   padding: .5em 0;
   box-shadow: 0px -2px 10px 0px #000;
 }
-
-.ExchangeRates > h3 > span {
-  color: rgb(57, 57, 194);
-}
-.ExchangeRates > h3 > span:hover {
-  color: rgb(17, 17, 190);
-}
