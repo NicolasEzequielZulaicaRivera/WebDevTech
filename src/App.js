@@ -10,11 +10,14 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
+  createHttpLink,
 } from "@apollo/client";
 
 import ExchangeRates from "./components/ExchangeRates";
 import PokeDex from "./components/PokeDex";
 import Tasks from "./components/Tasks";
+import RickAndMorty from "./components/RickAndMorty";
+import Airbnb from "./components/Airbnb";
 
 const TASKS_PORT = 4001;
 
@@ -30,6 +33,17 @@ const taskClient = new ApolloClient({
   uri: `http://localhost:${TASKS_PORT}/`,
   cache: new InMemoryCache()
 });
+const airbnbLink = createHttpLink({
+  uri: 'https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/airbnb-adcso/graphql',
+  headers: {
+    "email": "admin",
+    "password": "86yZQD2Ihw8v8OHa",
+  }
+});
+const airbnbClient = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: airbnbLink
+});
 
 function App() {
   return (
@@ -39,7 +53,8 @@ function App() {
           <Link to="/Rates">EXCHANGE RATES</Link>
           <Link to="/Poke">POKEMON</Link>
           <Link to="/Tasks">TASKS</Link>
-          <Link to="/Other">OTHER</Link>
+          <Link to="/RickAndMorty">RICK & MORTY</Link>
+          <Link to="/Airbnb">AIRBNB</Link>
         </div>
 
         <div className="main-container" >
@@ -63,8 +78,16 @@ function App() {
             </ApolloProvider>
           </Route>
 
-          <Route path="/Other">
-            <h1>WIP</h1>
+          <Route path="/RickAndMorty">
+            <ApolloProvider client={ratesClient}>
+              <RickAndMorty />
+            </ApolloProvider>
+          </Route>
+
+          <Route path="/Airbnb">
+            <ApolloProvider client={airbnbClient}>
+              <Airbnb />
+            </ApolloProvider>
           </Route>
 
         </Switch>

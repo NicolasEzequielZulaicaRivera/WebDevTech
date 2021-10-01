@@ -1,0 +1,7 @@
+.RickAndMorty {
+    --orange : #f39339;
+}
+
+.RickAndMorty > .title {
+    background-color: var(--orange);
+}

@@ -25,3 +25,12 @@
   background-color: #eee;
   font-weight: 600;
 }
+
+.title {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1em;
+  font-size: larger;
+  font-weight: 800;
+  box-shadow: inset 0px 0px 10px 1px #00000078;
+}
