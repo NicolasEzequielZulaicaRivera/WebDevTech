@@ -44,16 +44,17 @@ const Tasks = () => {
     const [ deleteTask ] = useMutation(DEL_TASK, {
         refetchQueries: [GET_TASKS],
         // TODO
-        /*update(cache, { deleteTodo }) {
+        update(cache, { deleteTodo }) {
             cache.modify({
               fields: {
                 todos(existingTodos = []) {
-                    console.log("TODOS",existingTodos);
-                    return existingTodos;
+                    const delRef = 'Todo:'+deleteTodo;
+                    cache.evict(delRef);// TODO : check if this is deleting the task correctly
+                    return existingTodos.filter( t => t.__ref !== delRef );
                 }
               }
             });
-        }*/
+        }
     });
 
     if (loading) return <p>Loading...</p>;
