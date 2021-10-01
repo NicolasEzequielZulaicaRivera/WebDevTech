@@ -1,11 +1,11 @@
 .Tasks {
-    --red : #ff5959;
+    --red : #e94040;
     --green : #56cf31;
 }
 
 .Tasks > .title {
     width: 100%;
-    background-color: var(--red);
+    background-color: var(--green);
     padding: 1em;
     font-size: larger;
     font-weight: 800;

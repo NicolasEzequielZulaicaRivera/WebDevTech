@@ -83,9 +83,10 @@ const Tasks = () => {
                     <div key={id} className="task">
                         <input type="text" defaultValue={type} className="saved-task" 
                             onChange={(e)=>{ e.target.classList.add("unsaved-task") }}
-                            onKeyPress={(e)=>{
-                                if( e.key !== 'Enter' ) return;
-                                
+                            onBlur={(e)=>{
+                                updateTask({ variables: {id, value: e.target.value} }).then( ()=>{
+                                    e.target.classList.remove("unsaved-task");
+                                });
                             }}
                             onKeyDown={(e)=>{
                                 if( e.key === "Enter" ){
