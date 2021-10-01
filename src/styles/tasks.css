@@ -1,0 +1,46 @@
+.Tasks {
+    --red : #ff5959;
+    --green : #56cf31;
+}
+
+.Tasks > .title {
+    width: 100%;
+    background-color: var(--red);
+    padding: 1em;
+    font-size: larger;
+    font-weight: 800;
+    box-shadow: inset 0px 0px 10px 1px #00000078;
+}
+
+.Tasks > .container {
+    padding: 1em;
+}
+
+.Tasks > .container > .task {
+    margin: 1em
+}
+.Tasks > .container > .task > input[type=text] {
+    padding: .3em;
+    width: clamp(10em,35em,80%);
+    font-size: medium;
+    outline: none;
+    border: 2px solid #000;
+}
+
+.Tasks .marker-saved {
+    color: var(--green);
+    font-weight: 700;
+}
+
+.Tasks .marker-unsaved {
+    color: var(--red);
+    font-weight: 700;
+}
+
+.Tasks > .container > .task > input[type=text].saved-task{
+    border: 2px solid var(--green);
+}
+
+.Tasks > .container > .task > input[type=text].unsaved-task {
+    border: 2px solid var(--red)!important;
+}

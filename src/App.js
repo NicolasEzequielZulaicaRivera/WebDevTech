@@ -14,6 +14,9 @@ import {
 
 import ExchangeRates from "./components/ExchangeRates";
 import PokeDex from "./components/PokeDex";
+import Tasks from "./components/Tasks";
+
+const TASKS_PORT = 4001;
 
 const ratesClient = new ApolloClient({
   uri: 'https://48p1r2roz4.sse.codesandbox.io', // uri specifies the URL of our GraphQL server.
@@ -21,6 +24,10 @@ const ratesClient = new ApolloClient({
 });
 const pokeClient = new ApolloClient({
   uri: 'https://dex-server.herokuapp.com/',
+  cache: new InMemoryCache()
+});
+const taskClient = new ApolloClient({
+  uri: `http://localhost:${TASKS_PORT}/`,
   cache: new InMemoryCache()
 });
 
@@ -51,7 +58,9 @@ function App() {
           </Route>
 
           <Route path="/Tasks">
-            <h1>WIP</h1>
+            <ApolloProvider client={taskClient}>
+              <Tasks />
+            </ApolloProvider>
           </Route>
 
           <Route path="/Other">
