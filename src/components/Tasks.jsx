@@ -18,7 +18,6 @@ mutation addTodo ($value:String!){
       type
     }
   }
-  
 `
 
 const UPD_TASK = gql`
@@ -28,7 +27,12 @@ mutation updateTask($id:String!,$value:String!) {
       type
     }
   }
-  
+`
+
+const DEL_TASK = gql`
+mutation deleteTodo($id:String!){
+    deleteTodo(id:$id)
+  }
 `
 
 const Tasks = () => {
@@ -37,6 +41,20 @@ const Tasks = () => {
     const { loading, error, data } = useQuery(GET_TASKS,{fetchPolicy:'cache-and-network'});
     const [ addTask ] = useMutation(ADD_TASK,{refetchQueries: [GET_TASKS]});
     const [ updateTask ] = useMutation(UPD_TASK);
+    const [ deleteTask ] = useMutation(DEL_TASK, {
+        refetchQueries: [GET_TASKS],
+        // TODO
+        /*update(cache, { deleteTodo }) {
+            cache.modify({
+              fields: {
+                todos(existingTodos = []) {
+                    console.log("TODOS",existingTodos);
+                    return existingTodos;
+                }
+              }
+            });
+        }*/
+    });
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
@@ -66,9 +84,17 @@ const Tasks = () => {
                             onChange={(e)=>{ e.target.classList.add("unsaved-task") }}
                             onKeyPress={(e)=>{
                                 if( e.key !== 'Enter' ) return;
-                                updateTask({ variables: {id, value: e.target.value} }).then( ()=>{
-                                    e.target.classList.remove("unsaved-task");
-                                })
+                                
+                            }}
+                            onKeyDown={(e)=>{
+                                if( e.key === "Enter" ){
+                                    updateTask({ variables: {id, value: e.target.value} }).then( ()=>{
+                                        e.target.classList.remove("unsaved-task");
+                                    });
+                                }
+                                if( e.key === "Delete" ){
+                                    deleteTask({ variables: {id} });
+                                }
                             }}
                         />
                     </div>
@@ -79,6 +105,8 @@ const Tasks = () => {
             <div>
                 <span className="marker-saved">Saved</span> - <span className="marker-unsaved">Unsaved</span>
             </div>
+            <div>Press Delete To Delete</div>
+            <br/><br/>
                 
         </div>
     );

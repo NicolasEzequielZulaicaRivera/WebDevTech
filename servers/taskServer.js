@@ -18,6 +18,7 @@ const typeDefs = `
 	type Mutation {
 		addTodo(type: String!): Todo
 		updateTodo(id: String!, type: String!): Todo
+    deleteTodo(id: String!): String
 	}
 `;
 
@@ -46,6 +47,10 @@ const resolvers = {
       const todo = { type, id };
       cache.set(id, type);
       return todo;
+    },
+    deleteTodo: (_, { id }) => {
+      cache.del(id);
+      return id;
     }
   }
 };
