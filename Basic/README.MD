@@ -6,6 +6,8 @@
 - `boolean`
 - `any`
 - `void`
+- `null`
+- `undefined`
 
 #### Others
 - Tuples
