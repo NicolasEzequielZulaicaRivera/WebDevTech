@@ -4,6 +4,10 @@ export enum SortType {
     "TOGGLE"
 }
 
+const getNextId = (tasks: IndexedTask[]) => {
+    return tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1
+}
+
 export const TaskReducer  = (state:State, action:Actions) => {
     switch (action.type) {
         case 'ADD_TASK':
@@ -11,7 +15,7 @@ export const TaskReducer  = (state:State, action:Actions) => {
                 ...state,
                 tasks: [
                     ...state.tasks,
-                    {...action.payload, id: state.tasks.length}
+                    {...action.payload, id: getNextId(state.tasks)}
                 ]
             }
         case 'REMOVE_TASK':
@@ -38,6 +42,15 @@ export const TaskReducer  = (state:State, action:Actions) => {
                 }),
                 sort
             }
+        case 'TOGGLE_COMPLETE_TASK':
+            return {
+                ...state,
+                tasks: state.tasks.map(task => (
+                    (task.id === action.payload)? 
+                    { ...task, completed: !task.completed}
+                    : task
+                ))
+            }
         default:
             return state
     }
@@ -60,4 +73,5 @@ type State = {
 export type Actions = 
     { type: 'ADD_TASK', payload: Task } |
     { type: 'REMOVE_TASK', payload: number } |
-    { type: 'SORT_TASKS', payload: SortType };
+    { type: 'SORT_TASKS', payload: SortType } |
+    { type: 'TOGGLE_COMPLETE_TASK', payload: number };

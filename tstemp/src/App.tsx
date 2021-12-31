@@ -7,12 +7,12 @@ function App() {
   return (
     <div className="App">
 
-      <section className={'counters'}>
+      <section className={'_counters'}>
         <Counter />
         <AltCounter />
       </section>
       <hr />
-      <section className={'tasks'}>
+      <section className={'_tasks'}>
         <Tasks />
       </section>
     </div>

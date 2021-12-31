@@ -6,13 +6,13 @@ hr {
   margin: 0;
 }
 
-section.counters {
+section._counters {
   display: flex;
   justify-content: space-evenly;
   align-items: stretch;
   flex-direction: row;
 }
 
-section.tasks {
+section._tasks {
   margin-top: .5em;
 }

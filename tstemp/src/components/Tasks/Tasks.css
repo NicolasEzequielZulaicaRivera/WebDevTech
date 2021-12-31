@@ -1,0 +1,53 @@
+.tasks_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0px 20px 30px 20px;
+}
+
+.tasks_container .task {
+    display: flex;
+    background-color: #fafafa;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px -1px #0007;
+}
+
+.tasks_container .task:hover {
+    box-shadow: 0px 0px 3px -1px #000;
+}
+
+.tasks_container .task > div {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.tasks_container .task > div:not(:last-child) {
+    box-shadow: 1px 0px 4px -2px #0007;
+}
+
+.tasks_container .task > div:last-child {
+    cursor: pointer;
+}
+
+.tasks_container .task.task-completed {
+    background-color: #dbf5c7;
+    color: #52872a;
+}
+
+.tasks_container .task .delete-task {
+    color: #b82929;
+}
+.tasks_container .task .delete-task:hover {
+    color: #cd1313;
+    stroke-width: 2.5px;
+}
+
+.addTask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

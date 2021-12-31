@@ -1,14 +1,37 @@
 import React, {useReducer, useRef} from 'react'
 import {TaskReducer, IndexedTask, Actions as TaskActions, SortType} from './TasksReducer'
 
+import './Tasks.css'
+import {FiTrash2} from 'react-icons/fi'
 
-const defaultTask = ({task,dispatch}:childProps):JSX.Element => (
-    <div className={'task'}>
-        <div>{task.id}</div>
-        <div>{task.title}</div>
-        <div>{task.completed}</div>
-    </div>
-)
+const defaultTask = ({task,dispatch}:childProps):JSX.Element => {
+
+    const className = 'task ' + (task.completed? 'task-completed': '');
+
+    const handleDelete = () =>{
+        dispatch?.({
+            type: 'REMOVE_TASK',
+            payload: task.id
+        })
+    }
+
+    const handleComplete = () =>{
+        dispatch?.({
+            type: 'TOGGLE_COMPLETE_TASK',
+            payload: task.id
+        })
+    }
+    
+    return (
+        <div className={className} onClick={handleComplete} >
+            <div>{task.id}</div>
+            <div>{task.title}</div>
+            <div onClick={handleDelete} >
+                <FiTrash2 className={'delete-task'} />
+            </div>
+        </div>
+    )
+}
 
 export const Tasks : React.FC<Props>= ({
     children
@@ -16,7 +39,9 @@ export const Tasks : React.FC<Props>= ({
 
     const ref = useRef<HTMLInputElement>(null)
 
-    const [{tasks}, dispatch] = useReducer(TaskReducer, {tasks:[]})
+    const [{tasks}, dispatch] = useReducer(
+        TaskReducer, { tasks:[], sort: SortType.ASC }
+    )
 
     const addTask = (title:string) => {
         dispatch({
@@ -41,9 +66,15 @@ export const Tasks : React.FC<Props>= ({
         })
     }
 
+    const taskInputHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') handleAddTask()
+    }
+
     return (
         <div className={'tasks'}>
             <h3>TASKS</h3>
+
+            <div className={'tasks_container'}>
             {
                 tasks.map( (task, i) => (
                     <div key={i} className={'task_wrapper'}>
@@ -51,9 +82,10 @@ export const Tasks : React.FC<Props>= ({
                     </div>
                 ))
             }
+            </div>
 
             <div className={'addTask'}>
-                <input type='text' placeholder='Task' ref={ref} />
+                <input type='text' placeholder='Task' ref={ref} onKeyDown={taskInputHandler} />
                 <button onClick={handleAddTask}>Add Task</button>
                 <button onClick={handleSort}>Sort</button>
             </div>
