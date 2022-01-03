@@ -8,6 +8,7 @@ function App() {
     <div className="App">
 
       <section className={'_counters'}>
+        <h3>COUNTERS</h3>
         <Counter />
         <AltCounter />
       </section>
