@@ -32,3 +32,15 @@
 - Incremental Static Regeneration
 - fallback: true
 - getServerSideProps
+
+### Image Optimization
+
+We cannot use the default loader for images.
+
+- use img
+- use another loader
+- other options like [next-optimized-images](https://www.npmjs.com/package/next-optimized-images#example)
+
+## DISCLAIMER
+
+STATIC HTML EXPORT WORKS QUITE BADLY.

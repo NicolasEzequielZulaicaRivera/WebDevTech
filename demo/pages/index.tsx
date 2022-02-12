@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { getAnimals, AnimalDesc } from "../lib/animals";
@@ -30,11 +29,11 @@ export default function Home({ animals }: { animals: AnimalDesc[] }) {
             <Link href={`/${id}`} key={id}>
               <a>
                 <div className={styles.card}>
-                  <Image
+                  <img
                     src={"/img/" + id + ".png"}
                     alt={name}
-                    width={300}
-                    height={300}
+                    width={250}
+                    height={250}
                   />
                   <h2>{name}</h2>
                   <p>{description}</p>
