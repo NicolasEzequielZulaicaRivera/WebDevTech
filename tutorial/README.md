@@ -127,6 +127,10 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
 ### Deploying
 
+see [documentation](https://nextjs.org/docs/deployment)
+
+> Deploying with Vercel is the easiest way to get started.
+
 ---
 
 ### Libraries
