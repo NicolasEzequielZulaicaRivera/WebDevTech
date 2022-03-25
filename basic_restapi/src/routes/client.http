@@ -1,0 +1,23 @@
+# HTTP REQUESTS
+// using rest api ( vscode extension )
+
+## Api
+
+### Index
+GET http://localhost:3000/api HTTP/1.1
+
+## Characters
+
+### GET Characters
+GET http://localhost:3000/api/characters HTTP/1.1
+
+### GET Character
+GET http://localhost:3000/api/characters/0 HTTP/1.1
+
+### POST Characters
+POST http://localhost:3000/api/characters HTTP/1.1
+content-type: application/json
+
+{
+  "name": "pluto"
+}
